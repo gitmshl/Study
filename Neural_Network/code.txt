@@ -1,0 +1,34 @@
+1 2 1
+1 1 1
+
+
+        double delta[Max_in_Array(sizes, layers + 1) + 1];
+    double delta1[Max_in_Array(sizes, layers + 1) + 1];
+    int layer = layers - 1;
+    for (int j = 1; j <= sizes[layers]; j++)
+        delta[j] = 2 * (o[layers][j] - Answers[j]) * o[layers][j] * (1-o[layers][j]);
+    /// Веса
+    for (int i = 0; i <= sizes[layer]; i++)
+        for (int j = 1; j <= sizes[layers]; j++)
+            derWeights[layer][i][j] = delta[j] * o[layer][i];
+    /// Копия
+    for (int i = 1; i <= sizes[layers]; i++)
+        delta1[i] = delta[i];
+
+    for (layer = layer - 1; layer >= 0; layer--)
+    {
+        for (int j = 1; j <= sizes[layer + 1]; j++)
+        {
+            delta[j] = 0;
+            for (int k = 1; k <= sizes[layer + 2]; k++)
+                delta[j] += delta1[k] * weights[layer + 1][j][k];
+        }
+
+        for (int i = 0; i <= sizes[layer]; i++)
+            for (int j = 1; j <= sizes[layer + 1]; j++)
+                derWeights[layer][i][j] = delta[j] * o[layer][i];
+
+        /// Копия
+        for (int i = 1; i <= sizes[layer + 1]; i++)
+            delta1[i] = delta[i];
+    }
