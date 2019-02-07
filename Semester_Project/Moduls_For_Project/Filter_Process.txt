@@ -1,0 +1,24 @@
+BitmapCapslock
+BitmapNumber
+Bitmap
+Progress
+panel
+Todo list
+HTML viewer
+CodeSnippets
+Scripting console
+Watches (new)
+Running threads
+Memory
+Disassembly
+CPU Registers
+Breakpoints
+Call stack
+Spell-Checker
+Project Options Plugin
+Tool Output
+Energy Manager
+NewEMMainFrame
+RTDriver_FaceTracking
+IdeaEyeDlg
+Program Manager
